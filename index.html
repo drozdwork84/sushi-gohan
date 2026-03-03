@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOHAN GASTRO Alicante | Buffet Libre Sushi | Sant Vicent del Raspeig</title>
+  <meta name="description"
+    content="Tu restaurante sushi buffet libre en Sant Vicent del Raspeig, Alicante. Más de 100 platos. Sin límite de rondas. Reserva ya.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #e8c96e;
+      --dark: #0a0a0a;
+      --dark2: #111111;
+      --dark3: #1a1a1a;
+      --white: #ffffff;
+      --off-white: #f5f2ed;
+      --gray: #888888;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Montserrat', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 3px;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      transition: background 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .nav-logo span {
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.72rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--white);
+      transition: color 0.3s;
+      font-weight: 400;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      padding: 9px 22px;
+      font-size: 0.68rem !important;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--dark) !important;
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .nav-hamburger span {
+      width: 26px;
+      height: 1.5px;
+      background: var(--white);
+      transition: 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+      padding-bottom: 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.15) 40%, rgba(0, 0, 0, 0.7) 100%),
+        url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1600&q=80') center/cover no-repeat;
+      transform: scale(1.05);
+      transition: transform 8s ease;
+    }
+
+    #hero:hover .hero-bg {
+      transform: scale(1.0);
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .hero-tagline {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .hero-tagline::before,
+    .hero-tagline::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 700;
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .hero-title .gold {
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 2px;
+      margin-bottom: 40px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      padding: 14px 40px;
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      transition: all 0.3s;
+      border: 1px solid var(--gold);
+    }
+
+    .hero-btn:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+      animation: scrollLine 1.8s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0% {
+        transform: scaleY(0);
+        transform-origin: top;
+      }
+
+      50% {
+        transform: scaleY(1);
+        transform-origin: top;
+      }
+
+      51% {
+        transform: scaleY(1);
+        transform-origin: bottom;
+      }
+
+      100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+    }
+
+    /* ===== SECTION BASE ===== */
+    section {
+      padding: 100px 48px;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 24px 0;
+    }
+
+    .section-text {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.9rem;
+      line-height: 1.9;
+      max-width: 520px;
+    }
+
+    /* ===== ABOUT ===== */
+    #about {
+      background: var(--dark2);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-images {
+      position: relative;
+      height: 520px;
+    }
+
+    .about-img-main {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 75%;
+      height: 85%;
+      object-fit: cover;
+      filter: brightness(0.9);
+    }
+
+    .about-img-accent {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 50%;
+      height: 50%;
+      object-fit: cover;
+      border: 4px solid var(--dark2);
+      filter: brightness(0.9);
+    }
+
+    .about-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90px;
+      height: 90px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      color: var(--dark);
+      font-weight: 700;
+      line-height: 1.1;
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      z-index: 3;
+    }
+
+    .about-badge .num {
+      font-size: 1.8rem;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      border-left: 2px solid var(--gold);
+      padding-left: 16px;
+    }
+
+    .stat-num {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* ===== EXPERIENCE ===== */
+    #experience {
+      text-align: center;
+      background: var(--dark);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    #experience .section-divider {
+      margin: 24px auto;
+    }
+
+    #experience .section-text {
+      margin: 0 auto;
+      text-align: center;
+      max-width: 600px;
+    }
+
+    /* ===== MENU ===== */
+    #menu {
+      background: var(--dark3);
+      padding: 100px 48px;
+    }
+
+    .menu-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .menu-header .section-divider {
+      margin: 24px auto;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .menu-card {
+      background: var(--dark2);
+      padding: 50px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .menu-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .menu-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .menu-card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .menu-card-type {
+      font-size: 0.6rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .menu-card-name {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .menu-card-days {
+      font-size: 0.75rem;
+      color: var(--gray);
+      letter-spacing: 1px;
+      margin-bottom: 28px;
+    }
+
+    .menu-card-price {
+      font-family: var(--font-serif);
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .menu-card-price sup {
+      font-size: 1.1rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      padding: 60px 48px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-serif);
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .footer-col p {
+      color: var(--gray);
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo"><img src="logo.png" alt="GOHAN GASTRO" style="height: 100px; display: block;"></a>
+    <ul class="nav-links">
+      <li><a href="#hero">Inicio</a></li>
+      <li><a href="#menu">Buffet Libre</a></li>
+      <li><a href="#footer">Contacto</a></li>
+    </ul>
+    <a href="#menu" class="nav-cta">Reservar Mesa</a>
+  </nav>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-tagline">Experiencia Gastronómica Japonesa</div>
+      <h1 class="hero-title">Buffet Libre<br><span class="gold">A La Carta</span></h1>
+      <p class="hero-subtitle">Más de 100 platos preparados al momento en Sant Vicent del Raspeig. Calidad premium sin
+        límites.</p>
+      <div style="display:flex; gap: 20px; justify-content: center;">
+        <a href="#menu" class="hero-btn">Ver Precios</a>
+        <a href="#footer" class="hero-btn" style="background: transparent; color: var(--gold);">Visítanos</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu">
+    <div class="menu-header">
+      <div class="section-label">Nuestro Sistema</div>
+      <h2 class="section-title">Buffet Libre Sin Límites</h2>
+      <div class="section-divider"></div>
+      <p
+        style="color:var(--gold); font-size: 0.9rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">
+        * Condición para niños: Estatura menor a 1,30m
+      </p>
+    </div>
+
+    <div class="menu-grid"
+      style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 900px; gap: 30px; margin: 0 auto;">
+
+      <!-- MEDIODIA -->
+      <div class="menu-card">
+        <div class="menu-card-type">De Lunes a Viernes</div>
+        <h3 class="menu-card-name">Mediodía</h3>
+        <p class="menu-card-days">Días laborables</p>
+
+        <div style="margin-bottom: 30px;">
+          <div
+            style="color: var(--gray); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px;">
+            Adulto</div>
+          <div class="menu-card-price">16,90<sup>€</sup></div>
+        </div>
+
+        <div>
+          <div
+            style="color: var(--gray); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px;">
+            Niño</div>
+          <div class="menu-card-price" style="font-size: 2.2rem; color: var(--white);">9,90<sup>€</sup></div>
+        </div>
+      </div>
+
+      <!-- NOCHES Y FINDES -->
+      <div class="menu-card">
+        <div
+          style="position: absolute; top: 15px; right: 15px; background: var(--white); color: var(--dark); padding: 5px 10px; font-size: 0.6rem; font-weight: 700; border-radius: 4px; letter-spacing: 1px;">
+          POPULAR</div>
+        <div class="menu-card-type">Cenas y Fines de Semana</div>
+        <h3 class="menu-card-name">Cenas y Findes</h3>
+        <p class="menu-card-days">Incluye festivos</p>
+
+        <div style="margin-bottom: 30px;">
+          <div
+            style="color: var(--gray); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px;">
+            Adulto</div>
+          <div class="menu-card-price">23,90<sup>€</sup></div>
+        </div>
+
+        <div>
+          <div
+            style="color: var(--gray); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px;">
+            Niño</div>
+          <div class="menu-card-price" style="font-size: 2.2rem; color: var(--white);">12,90<sup>€</sup></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="footer-col">
+      <h4><img src="logo.png" alt="GOHAN GASTRO" style="height: 60px; margin-bottom: 10px;"></h4>
+      <p>Auténtica cocina japonesa en el corazón de Sant Vicent del Raspeig. Calidad, tradición y modernidad en cada
+        bocado.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Visítanos</h4>
+      <p>Plaza Alcalde Gabriel Molina Villegas, 1</p>
+      <p>03690 Sant Vicent del Raspeig, Alicante</p>
+      <p>+34 742 012 255</p>
+    </div>
+    <div class="footer-col">
+      <h4>Horario</h4>
+      <p>Lunes - Domingo: 13:00 - 16:30</p>
+      <p>Noches: 20:00 - 23:30</p>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+
+</html>
