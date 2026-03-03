@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap"
     rel="stylesheet">
   <style>
     /* ===== RESET & BASE ===== */
@@ -23,16 +23,17 @@
     }
 
     :root {
-      --gold: #C9A84C;
-      --gold-light: #e8c96e;
-      --dark: #0a0a0a;
-      --dark2: #111111;
-      --dark3: #1a1a1a;
+      --gold: #FFD700;
+      --gold-light: #ffeb3b;
+      --dark: #050505;
+      --dark2: #0a0a0a;
+      --dark3: #111111;
       --white: #ffffff;
       --off-white: #f5f2ed;
-      --gray: #888888;
+      --gray: #a0a0a0;
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-sans: 'Montserrat', sans-serif;
+      --font-accent: 'Great Vibes', cursive;
     }
 
     html {
@@ -79,66 +80,68 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
-      padding: 18px 48px;
-      transition: background 0.4s ease;
+      padding: 20px 60px;
+      transition: all 0.4s ease;
     }
 
     nav.scrolled {
-      background: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(15px);
+      padding: 15px 60px;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.1);
     }
 
     .nav-logo {
-      font-family: var(--font-serif);
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 4px;
-      color: var(--gold);
-      text-transform: uppercase;
-    }
-
-    .nav-logo span {
-      color: var(--white);
+      display: flex;
+      align-items: center;
     }
 
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 40px;
       list-style: none;
       align-items: center;
     }
 
     .nav-links a {
-      font-size: 0.72rem;
-      letter-spacing: 2.5px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--white);
       transition: color 0.3s;
-      font-weight: 400;
+      font-weight: 500;
+      opacity: 0.8;
     }
 
     .nav-links a:hover {
       color: var(--gold);
+      opacity: 1;
+    }
+
+    .nav-cta-wrapper {
+      display: flex;
+      justify-content: flex-end;
     }
 
     .nav-cta {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold) !important;
-      padding: 9px 22px;
-      font-size: 0.68rem !important;
-      letter-spacing: 2px;
+      background: var(--gold);
+      color: var(--dark) !important;
+      padding: 10px 24px;
+      font-size: 0.7rem !important;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      transition: all 0.3s !important;
+      font-weight: 700;
+      transition: all 0.3s;
+      border-radius: 4px;
     }
 
     .nav-cta:hover {
-      background: var(--gold) !important;
-      color: var(--dark) !important;
+      background: var(--white);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
     }
 
     .nav-hamburger {
@@ -159,97 +162,108 @@
     #hero {
       position: relative;
       height: 100vh;
-      min-height: 600px;
+      min-height: 700px;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding-bottom: 80px;
     }
 
     .hero-bg {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.15) 40%, rgba(0, 0, 0, 0.7) 100%),
+        linear-gradient(to right, rgba(5, 5, 5, 0.8) 0%, rgba(5, 5, 5, 0.4) 50%, rgba(5, 5, 5, 0.8) 100%),
+        linear-gradient(to bottom, rgba(5, 5, 5, 0.3) 0%, rgba(5, 5, 5, 0.1) 50%, rgba(5, 5, 5, 0.9) 100%),
         url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=1600&q=80') center/cover no-repeat;
-      transform: scale(1.05);
-      transition: transform 8s ease;
+      transform: scale(1.1);
+      transition: transform 10s ease-out;
     }
 
-    #hero:hover .hero-bg {
-      transform: scale(1.0);
+    #hero.visible .hero-bg {
+      transform: scale(1);
     }
 
     .hero-content {
       position: relative;
       text-align: center;
       z-index: 2;
+      max-width: 900px;
+      padding: 0 20px;
     }
 
-    .hero-tagline {
-      font-family: var(--font-sans);
-      font-size: 0.68rem;
-      letter-spacing: 5px;
-      text-transform: uppercase;
+    .hero-accent {
+      font-family: var(--font-accent);
+      font-size: 2.5rem;
       color: var(--gold);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
-
-    .hero-tagline::before,
-    .hero-tagline::after {
-      content: '';
-      width: 40px;
-      height: 1px;
-      background: var(--gold);
+      margin-bottom: -10px;
+      display: block;
     }
 
     .hero-title {
       font-family: var(--font-serif);
-      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-size: clamp(3.5rem, 10vw, 9rem);
       font-weight: 700;
-      letter-spacing: 8px;
+      letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--white);
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-
-    .hero-title .gold {
-      color: var(--gold);
+      line-height: 0.9;
+      margin-bottom: 25px;
     }
 
     .hero-subtitle {
-      font-family: var(--font-serif);
-      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
       font-weight: 300;
-      font-style: italic;
-      color: rgba(255, 255, 255, 0.8);
-      letter-spacing: 2px;
-      margin-bottom: 40px;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 1px;
+      margin-bottom: 45px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .hero-btn {
-      display: inline-block;
+    .hero-btns {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .btn-primary {
       background: var(--gold);
       color: var(--dark);
-      padding: 14px 40px;
-      font-size: 0.72rem;
-      letter-spacing: 3px;
+      padding: 16px 45px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      font-weight: 600;
-      font-family: var(--font-sans);
-      transition: all 0.3s;
-      border: 1px solid var(--gold);
+      font-weight: 700;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      border: none;
+      border-radius: 4px;
     }
 
-    .hero-btn:hover {
-      background: transparent;
+    .btn-primary:hover {
+      background: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(255, 215, 0, 0.15);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: var(--white);
+      padding: 16px 45px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.4s;
+      border-radius: 4px;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
       color: var(--gold);
+      background: rgba(255, 215, 0, 0.05);
     }
 
     .hero-scroll {
@@ -429,7 +443,8 @@
       text-align: center;
       background: var(--dark);
       max-width: 800px;
-      margin: 0 auto;
+      margin: 100px auto;
+      padding: 0 20px;
     }
 
     #experience .section-divider {
@@ -445,12 +460,12 @@
     /* ===== MENU ===== */
     #menu {
       background: var(--dark3);
-      padding: 100px 48px;
+      padding: 120px 48px;
     }
 
     .menu-header {
       text-align: center;
-      margin-bottom: 70px;
+      margin-bottom: 80px;
     }
 
     .menu-header .section-divider {
@@ -459,19 +474,27 @@
 
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      max-width: 1100px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .menu-card {
       background: var(--dark2);
-      padding: 50px 36px;
+      padding: 60px 40px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      transition: transform 0.3s;
+      border: 1px solid rgba(255, 215, 0, 0.05);
+      border-radius: 8px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .menu-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 215, 0, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
     .menu-card::before {
@@ -480,108 +503,153 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
+      height: 4px;
       background: var(--gold);
       transform: scaleX(0);
-      transition: transform 0.3s;
-    }
-
-    .menu-card:hover {
-      transform: translateY(-6px);
+      transition: transform 0.4s ease;
+      transform-origin: center;
     }
 
     .menu-card:hover::before {
       transform: scaleX(1);
     }
 
-    .menu-card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-
     .menu-card-type {
-      font-size: 0.6rem;
+      font-size: 0.7rem;
       letter-spacing: 4px;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 12px;
+      margin-bottom: 15px;
+      font-weight: 600;
     }
 
     .menu-card-name {
       font-family: var(--font-serif);
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      line-height: 1.2;
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1;
+      color: var(--white);
     }
 
     .menu-card-days {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--gray);
-      letter-spacing: 1px;
-      margin-bottom: 28px;
+      letter-spacing: 1.5px;
+      margin-bottom: 35px;
+      font-weight: 400;
+    }
+
+    .price-group {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .price-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .price-label {
+      color: var(--gray);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+      font-weight: 600;
     }
 
     .menu-card-price {
       font-family: var(--font-serif);
-      font-size: 2.6rem;
+      font-size: 3rem;
       font-weight: 700;
       color: var(--gold);
-      line-height: 1;
+      line-height: 0.8;
     }
 
     .menu-card-price sup {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      top: -1em;
+      margin-left: 2px;
+    }
+
+    .price-child .menu-card-price {
+      font-size: 2.2rem;
+      color: var(--white);
     }
 
     /* ===== FOOTER ===== */
     footer {
       background: var(--dark);
-      padding: 60px 48px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 100px 80px 50px;
+      border-top: 1px solid rgba(255, 215, 0, 0.1);
+    }
+
+    .footer-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
+      grid-template-columns: 2fr 1fr 1.2fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .footer-col h4 {
       font-family: var(--font-serif);
       color: var(--gold);
-      margin-bottom: 20px;
-      font-size: 1.2rem;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
     }
 
     .footer-col p {
-      color: var(--gray);
-      font-size: 0.85rem;
-      margin-bottom: 10px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+
+    .footer-bottom {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 0.75rem;
+      letter-spacing: 1px;
     }
   </style>
 </head>
 
 <body>
   <nav id="navbar">
-    <a href="#hero" class="nav-logo"><img src="logo.png" alt="GOHAN GASTRO" style="height: 100px; display: block;"></a>
+    <div class="nav-logo">
+      <a href="#hero">
+        <img src="logo.png" alt="GOHAN GASTRO" style="height: 80px;">
+      </a>
+    </div>
     <ul class="nav-links">
       <li><a href="#hero">Inicio</a></li>
       <li><a href="#menu">Buffet Libre</a></li>
       <li><a href="#footer">Contacto</a></li>
     </ul>
-    <a href="#menu" class="nav-cta">Reservar Mesa</a>
+    <div class="nav-cta-wrapper">
+      <a href="#menu" class="nav-cta">Reservar</a>
+    </div>
   </nav>
 
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="hero-tagline">Experiencia Gastronómica Japonesa</div>
-      <h1 class="hero-title">Buffet Libre<br><span class="gold">A La Carta</span></h1>
-      <p class="hero-subtitle">Más de 100 platos preparados al momento en Sant Vicent del Raspeig. Calidad premium sin
-        límites.</p>
-      <div style="display:flex; gap: 20px; justify-content: center;">
-        <a href="#menu" class="hero-btn">Ver Precios</a>
-        <a href="#footer" class="hero-btn" style="background: transparent; color: var(--gold);">Visítanos</a>
+      <span class="hero-accent">Auténtico & Premium</span>
+      <h1 class="hero-title">GOHAN<br>GASTRO</h1>
+      <p class="hero-subtitle">Descubre la excelencia del buffet libre japonés a la carta en Sant Vicent del Raspeig.
+        Más de 100 creaciones del maestro.</p>
+      <div class="hero-btns">
+        <a href="#menu" class="btn-primary">Ver Menú</a>
+        <a href="#footer" class="btn-outline">Visítanos</a>
       </div>
     </div>
   </section>
@@ -597,51 +665,46 @@
       </p>
     </div>
 
-    <div class="menu-grid"
-      style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 900px; gap: 30px; margin: 0 auto;">
+    <div class="menu-grid">
 
       <!-- MEDIODIA -->
       <div class="menu-card">
-        <div class="menu-card-type">De Lunes a Viernes</div>
+        <div class="menu-card-type">Experiencia</div>
         <h3 class="menu-card-name">Mediodía</h3>
-        <p class="menu-card-days">Días laborables</p>
+        <p class="menu-card-days">De Lunes a Viernes</p>
 
-        <div style="margin-bottom: 30px;">
-          <div
-            style="color: var(--gray); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px;">
-            Adulto</div>
-          <div class="menu-card-price">16,90<sup>€</sup></div>
-        </div>
+        <div class="price-group">
+          <div class="price-item">
+            <div class="price-label">Adulto</div>
+            <div class="menu-card-price">16,90<sup>€</sup></div>
+          </div>
 
-        <div>
-          <div
-            style="color: var(--gray); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px;">
-            Niño</div>
-          <div class="menu-card-price" style="font-size: 2.2rem; color: var(--white);">9,90<sup>€</sup></div>
+          <div class="price-item price-child">
+            <div class="price-label">Niño</div>
+            <div class="menu-card-price">9,90<sup>€</sup></div>
+          </div>
         </div>
       </div>
 
       <!-- NOCHES Y FINDES -->
       <div class="menu-card">
         <div
-          style="position: absolute; top: 15px; right: 15px; background: var(--white); color: var(--dark); padding: 5px 10px; font-size: 0.6rem; font-weight: 700; border-radius: 4px; letter-spacing: 1px;">
+          style="position: absolute; top: 15px; right: 20px; background: var(--gold); color: var(--dark); padding: 4px 12px; font-size: 0.65rem; font-weight: 800; border-radius: 20px; letter-spacing: 1px;">
           POPULAR</div>
-        <div class="menu-card-type">Cenas y Fines de Semana</div>
+        <div class="menu-card-type">Gourmet</div>
         <h3 class="menu-card-name">Cenas y Findes</h3>
         <p class="menu-card-days">Incluye festivos</p>
 
-        <div style="margin-bottom: 30px;">
-          <div
-            style="color: var(--gray); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px;">
-            Adulto</div>
-          <div class="menu-card-price">23,90<sup>€</sup></div>
-        </div>
+        <div class="price-group">
+          <div class="price-item">
+            <div class="price-label">Adulto</div>
+            <div class="menu-card-price">23,90<sup>€</sup></div>
+          </div>
 
-        <div>
-          <div
-            style="color: var(--gray); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px;">
-            Niño</div>
-          <div class="menu-card-price" style="font-size: 2.2rem; color: var(--white);">12,90<sup>€</sup></div>
+          <div class="price-item price-child">
+            <div class="price-label">Niño</div>
+            <div class="menu-card-price">12,90<sup>€</sup></div>
+          </div>
         </div>
       </div>
 
@@ -649,32 +712,50 @@
   </section>
 
   <footer id="footer">
-    <div class="footer-col">
-      <h4><img src="logo.png" alt="GOHAN GASTRO" style="height: 60px; margin-bottom: 10px;"></h4>
-      <p>Auténtica cocina japonesa en el corazón de Sant Vicent del Raspeig. Calidad, tradición y modernidad en cada
-        bocado.</p>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <img src="logo.png" alt="GOHAN GASTRO" style="height: 60px; margin-bottom: 30px;">
+        <p>Auténtica cocina japonesa en el corazón de Sant Vicent del Raspeig. La fusión perfecta entre tradición
+          milenaria
+          y la modernidad de la cocina a la carta.</p>
+        <div style="display: flex; gap: 15px; margin-top: 25px;">
+          <a href="#" style="color: var(--gold); font-size: 1.2rem;">IG</a>
+          <a href="#" style="color: var(--gold); font-size: 1.2rem;">FB</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Visítanos</h4>
+        <p>Plaza Alcalde Gabriel Molina Villegas, 1<br>03690 Sant Vicent del Raspeig, Alicante</p>
+        <p style="color: var(--gold); font-weight: 600;">+34 742 012 255</p>
+      </div>
+      <div class="footer-col">
+        <h4>Horario</h4>
+        <p><strong>Comida:</strong> 13:00 - 16:30</p>
+        <p><strong>Cena:</strong> 20:00 - 23:30</p>
+        <p>Abierto de Lunes a Domingo</p>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Visítanos</h4>
-      <p>Plaza Alcalde Gabriel Molina Villegas, 1</p>
-      <p>03690 Sant Vicent del Raspeig, Alicante</p>
-      <p>+34 742 012 255</p>
-    </div>
-    <div class="footer-col">
-      <h4>Horario</h4>
-      <p>Lunes - Domingo: 13:00 - 16:30</p>
-      <p>Noches: 20:00 - 23:30</p>
+    <div class="footer-bottom">
+      &copy; 2024 GOHAN GASTRO Alicante. Todos los derechos reservados.
     </div>
   </footer>
 
   <script>
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
+    document.addEventListener('DOMContentLoaded', () => {
+      // Trigger hero animation
+      setTimeout(() => {
+        document.getElementById('hero').classList.add('visible');
+      }, 100);
+
+      // Scroll listener
+      window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      });
     });
   </script>
 </body>
